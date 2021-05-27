@@ -192,6 +192,8 @@ func (p *MsxSwagger) getSecurity(w http.ResponseWriter, r *http.Request) {
 func (p *MsxSwagger) SwaggerRoutes(w http.ResponseWriter, r *http.Request) {
 	url := r.RequestURI
 	switch {
+	case url == p.config.DocumentationConfig.RootPath+p.config.DocumentationConfig.Ui.Endpoint + "/":
+		http.Redirect(w,r,p.config.DocumentationConfig.RootPath+p.config.DocumentationConfig.Ui.Endpoint,http.StatusPermanentRedirect)
 	case url == p.config.DocumentationConfig.RootPath+p.config.DocumentationConfig.Ui.Endpoint+p.config.DocumentationConfig.SwaggerPath:
 		p.getSwaggerResources(w, r)
 	case url == p.config.DocumentationConfig.RootPath+p.config.DocumentationConfig.Ui.Endpoint+p.config.DocumentationConfig.SwaggerPath+"/configuration/security/sso":
