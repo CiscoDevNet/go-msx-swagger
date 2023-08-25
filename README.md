@@ -98,7 +98,7 @@ c.DocumentationConfig.RootPath = "/myservice"
 s, _ := msxswagger.NewSwagger(c)
 // Add it to your router as a wildcard path match to your configured Swagger 
 // path (defaults to /swagger). In this example we are using a gorilla/mux router.
-r.PathPrefix("/myservice/swagger/").HandlerFunc(s.SwaggerRoutes)
+r.PathPrefix("/myservice/swagger").HandlerFunc(s.SwaggerRoutes)
 ```
 
 To use an older 2.0 spec simply add the following:
@@ -124,7 +124,7 @@ c.DocumentationConfig.RootPath = "/myservice"
 s, _ := msxswagger.NewSwagger(c)
 // Add it to your router as a wildcard path match to your configured Swagger 
 // path (defaults to /swagger). In this example we are using a gorilla/mux router.
-r.PathPrefix("/myservice/swagger/").HandlerFunc(s.SwaggerRoutes)
+r.PathPrefix("/myservice/swagger").HandlerFunc(s.SwaggerRoutes)
 ```
 
 Once your app has started you can see your Swagger UI by going to the configured route. In a production solution you might want to pull dynamic configuration values from Vault or Consul.
